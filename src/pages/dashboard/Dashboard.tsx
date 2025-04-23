@@ -4,6 +4,8 @@
 // It also displays the loading text (isLoading) or error message (error) based on the loading state or any errors that occur.
 import ExpenseList from "../../components/ExpenseList";
 import useExpenses from "../../hooks/useExpenses";
+import { Expense } from "../../model/Expense";
+import DashboardStatus from "./DashboardStatus";
 
 // Dashboard.tsx
 // ├── uses useExpenses()             // Custom Hook
@@ -11,11 +13,22 @@ import useExpenses from "../../hooks/useExpenses";
 // │         └── uses apiClient       // axios configuration
 // └── renders ExpenseList            // Renders data table
 const Dashboard = () => {
+  const loggedInUser: string = "Usagi@example.com"; // This should be replaced with actual user data
   const { expenses, error, isLoading } = useExpenses();
+
+  const totalExpenses = expenses.reduce(
+    (acc: number, expense: Expense) => acc + expense.amount,
+    0
+  );
   return (
     <div className="container">
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
+      <DashboardStatus
+        loggedInUser={loggedInUser}
+        totalExpenses={totalExpenses}
+      />
+      <hr />
       <ExpenseList expenses={expenses} />
     </div>
   );
