@@ -1,5 +1,6 @@
 import { FaBars } from "react-icons/fa";
 import Logo from "./Logo";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,23 +9,24 @@ const Navbar = () => {
         <Logo />
         <div className="collapse navbar-collapse" id="navbarNav">
           <div className="navbar-nav">
-            <a className="nav-link active" aria-current="page" href="#">
-              Home
-            </a>
-            <a className="nav-link" href="#">
-              Features
-            </a>
-            <a className="nav-link" href="#">
-              Pricing
-            </a>
-            <a className="nav-link" aria-disabled="true">
-              Disabled
-            </a>
+            <NavLink to="/" className="nav-link">
+              Dashboard
+            </NavLink>
+            <NavLink to="/new" className="nav-link">
+              New Expense
+            </NavLink>
+            <NavLink to="/reports" className="nav-link">
+              Reports
+            </NavLink>
           </div>
         </div>
         <div className="d-flex" role="search">
-          <button className="btn btn-sm btn-outline-light">Login</button>
-          <button className="btn btn-sm btn-outline-light mx-1">Logout</button>
+          <NavLink className="btn btn-sm btn-outline-light" to="/login">
+            Login
+          </NavLink>
+          <NavLink className="btn btn-sm btn-outline-light mx-1" to="/register">
+            Register
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
