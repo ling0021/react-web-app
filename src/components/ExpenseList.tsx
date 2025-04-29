@@ -49,7 +49,7 @@ const ExpenseList = ({ expenses }: Props) => {
               <div className="card-title m-0">
                 <h5>{expense.name}</h5>
                 <span className="fst-italic">
-                  {DateUtils.formatDateString(expense.date)}
+                  {DateUtils.formatDateString(expense.date.toString())}
                 </span>
               </div>
               <div className="card-subtitle">
