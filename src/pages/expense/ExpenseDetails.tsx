@@ -45,7 +45,12 @@ const ExpenseDetails = () => {
         >
           Delete
         </button>
-        <button className="btn btn-sm btn-warning mx-2">Edit</button>
+        <button
+          className="btn btn-sm btn-warning mx-2"
+          onClick={() => navigate(`/edit/${expenseId}`)}
+        >
+          Edit
+        </button>
         <Link className="btn btn-sm btn-secondary" to="/">
           Back
         </Link>
@@ -73,7 +78,9 @@ const ExpenseDetails = () => {
               <tr>
                 <th>Date</th>
                 <td>
-                  {expense ? DateUtils.formatDateString(expense.date) : "N/A"}
+                  {expense
+                    ? DateUtils.formatDateString(expense.date.toString())
+                    : "N/A"}
                 </td>
               </tr>
               <tr>
