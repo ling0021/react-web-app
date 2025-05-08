@@ -30,7 +30,7 @@ class DateUtils {
 
     return `${dayName} ${day} ${month}, ${year}`;
   }
-  static formatDateString(dateString: Date) {
+  static formatDateString(dateString: string) {
     if (dateString !== null) {
       const date = new Date(dateString);
       return new Intl.DateTimeFormat("en-US", {

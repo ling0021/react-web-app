@@ -103,12 +103,23 @@ const Register = () => {
               </div>
             ) : null}
           </div>
-          <button
-            className="btn btn-sm btn-primary btn-outline-light"
-            type="submit"
-          >
-            Register
-          </button>
+          {isLoading && (
+            <button
+              className="btn btn-sm app-primary-bg-color btn-outline-light"
+              type="submit"
+              disabled
+            >
+              Loading...
+            </button>
+          )}
+          {!isLoading && (
+            <button
+              className="btn btn-sm app-primary-bg-color btn-outline-light"
+              type="submit"
+            >
+              Register
+            </button>
+          )}
         </form>
       </div>
     </div>
