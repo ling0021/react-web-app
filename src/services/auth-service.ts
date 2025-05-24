@@ -12,5 +12,5 @@ export const authenticate = (authRequest: AuthRequest) => {
 };
 
 export const signout = () => {
-  return apiClient.post<void>("/logout");
+  return apiClient.post<void>("/signout");
 };

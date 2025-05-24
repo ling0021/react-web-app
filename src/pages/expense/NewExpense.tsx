@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { Expense } from "../../model/Expense";
-import expenseValidationSchema from "../../validation/ExpenseValidationSchema";
+import expenseValidationSchema from "../../validation/expenseValidationSchema";
 import Dropdown from "../../components/Dropdown";
 import { expenseCategories } from "../../utils/AppConstants";
 import {
@@ -17,7 +17,7 @@ const NewExpense = () => {
   const [isLoading, setLoader] = useState<boolean>(false);
   const [initialValues, setInitialValues] = useState<Expense>({
     name: "",
-    amount: 0,
+    amount: "",
     note: "",
     category: "",
     date: new Date().toISOString().split("T")[0],
@@ -117,9 +117,9 @@ const NewExpense = () => {
             </label>
             <input
               type="date"
-              className="form-control"
               id="date"
               name="date"
+              className="form-control"
               value={formik.values.date}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -144,6 +144,13 @@ const NewExpense = () => {
             type="submit"
           >
             Save
+          </button>
+          <button
+            className="btn btn-sm app-primary-bg-color btn-outline-light"
+            type="reset"
+            onClick={formik.handleReset}
+          >
+            Reset
           </button>
         </form>
       </div>

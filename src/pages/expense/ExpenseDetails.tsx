@@ -71,7 +71,10 @@ const ExpenseDetails = () => {
                 <th>Amount</th>
                 <td>
                   {expense
-                    ? CurrencyUtils.formatCurrency(expense.amount, "USD")
+                    ? CurrencyUtils.formatCurrency(
+                        parseFloat(expense.amount),
+                        "USD"
+                      )
                     : "N/A"}
                 </td>
               </tr>

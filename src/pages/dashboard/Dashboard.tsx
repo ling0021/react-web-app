@@ -5,6 +5,7 @@
 import ExpenseList from "../../components/ExpenseList";
 import useExpenses from "../../hooks/useExpenses";
 import { Expense } from "../../model/Expense";
+import AppHelper from "../../utils/AppHelper";
 import DashboardStatus from "./DashboardStatus";
 
 // Dashboard.tsx
@@ -13,11 +14,11 @@ import DashboardStatus from "./DashboardStatus";
 // │         └── uses apiClient       // axios configuration
 // └── renders ExpenseList            // Renders data table
 const Dashboard = () => {
-  const loggedInUser: string = "Usagi@example.com"; // This should be replaced with actual user data
+  const loggedInUser: string = AppHelper.getLoggedInUser();
   const { expenses, error, isLoading } = useExpenses();
 
   const totalExpenses = expenses.reduce(
-    (acc: number, expense: Expense) => acc + expense.amount,
+    (acc: number, expense: Expense) => acc + parseFloat(expense.amount),
     0
   );
   return (
