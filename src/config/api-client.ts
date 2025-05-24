@@ -22,4 +22,23 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Response interceptor: handle 401 Unauthorized errors globally
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Remove user info from local storage
+      localStorage.removeItem("user");
+
+      // Optional alert to notify user
+      alert("Session has expired. Please log in again.");
+
+      // Redirect to login page (make sure your routing includes /login)
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export default apiClient;
